@@ -1,0 +1,18 @@
+#N canvas 941 102 879 621 12;
+#X obj 138 78 noise~;
+#X obj 168 106 noise~;
+#X obj 138 231 *~;
+#X obj 137 266 dac~;
+#X msg 268 46 Hissing is not a constant event.;
+#X msg 268 78 Modulate the hissing with a random low-frequency signal: use another noise generator through a low pass filter (lop~).;
+#X obj 167 139 lop~ 1;
+#X msg 268 161 Hisses come though in loud sudden bursts.;
+#X obj 168 172 *~;
+#X msg 267 196 Modify the dynamics of the low-frequency modulator by taking the square of the modulating signal. It expands the dynamic range of the modulator signal: it makes values close to 1 pass through unaltered but makes lower values much quieter. Because the average level is now lower: amplify the result to get back to a sensible level.;
+#X obj 168 202 *~ 350;
+#X connect 0 0 2 0;
+#X connect 1 0 6 0;
+#X connect 6 0 8 0;
+#X connect 6 0 8 1;
+#X connect 8 0 10 0;
+#X connect 10 0 2 1;
