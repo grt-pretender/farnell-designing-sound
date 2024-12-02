@@ -1,0 +1,13 @@
+#N canvas 1213 186 580 472 12;
+#X obj 138 78 noise~;
+#X obj 168 106 noise~;
+#X obj 138 168 *~;
+#X obj 137 200 dac~;
+#X msg 268 46 Hissing is not a constant event.;
+#X msg 268 78 Modulate the hissing with a random low-frequency signal: use another noise generator through a low pass filter (lop~).;
+#X obj 167 139 lop~ 1;
+#X connect 0 0 2 0;
+#X connect 1 0 6 0;
+#X connect 2 0 3 0;
+#X connect 2 0 3 1;
+#X connect 6 0 2 1;
